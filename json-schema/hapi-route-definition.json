@@ -1,0 +1,199 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://github.com/api-evangelist/hapi/json-schema/hapi-route-definition.json",
+  "title": "hapi Route Definition",
+  "description": "JSON Schema for hapi route configuration objects passed to server.route().",
+  "oneOf": [
+    { "$ref": "#/$defs/RouteConfig" },
+    {
+      "type": "array",
+      "items": { "$ref": "#/$defs/RouteConfig" }
+    }
+  ],
+  "$defs": {
+    "RouteConfig": {
+      "type": "object",
+      "required": ["method", "path", "handler"],
+      "properties": {
+        "method": {
+          "oneOf": [
+            { "type": "string" },
+            { "type": "array", "items": { "type": "string" } }
+          ],
+          "description": "HTTP method (GET, POST, PUT, DELETE, PATCH, OPTIONS, or *)."
+        },
+        "path": {
+          "type": "string",
+          "description": "Route path with optional parameters (e.g., /users/{id})."
+        },
+        "handler": {
+          "description": "Route handler function or object reference."
+        },
+        "options": {
+          "type": "object",
+          "properties": {
+            "auth": {
+              "oneOf": [
+                { "type": "boolean" },
+                { "type": "string" },
+                {
+                  "type": "object",
+                  "properties": {
+                    "strategy": { "type": "string" },
+                    "mode": {
+                      "type": "string",
+                      "enum": ["required", "optional", "try"]
+                    },
+                    "scope": {
+                      "oneOf": [
+                        { "type": "string" },
+                        { "type": "array", "items": { "type": "string" } }
+                      ]
+                    },
+                    "access": {
+                      "type": "object",
+                      "properties": {
+                        "scope": {
+                          "oneOf": [
+                            { "type": "string" },
+                            { "type": "array", "items": { "type": "string" } }
+                          ]
+                        }
+                      }
+                    }
+                  }
+                }
+              ],
+              "description": "Authentication configuration."
+            },
+            "validate": {
+              "type": "object",
+              "properties": {
+                "headers": {
+                  "description": "Joi schema for request headers."
+                },
+                "params": {
+                  "description": "Joi schema for path parameters."
+                },
+                "query": {
+                  "description": "Joi schema for query parameters."
+                },
+                "payload": {
+                  "description": "Joi schema for request payload."
+                },
+                "failAction": {
+                  "type": "string",
+                  "enum": ["error", "log", "ignore"]
+                }
+              },
+              "description": "Input validation schemas."
+            },
+            "response": {
+              "type": "object",
+              "properties": {
+                "schema": {
+                  "description": "Joi schema for response validation."
+                },
+                "failAction": {
+                  "type": "string",
+                  "enum": ["error", "log"]
+                },
+                "emptyStatusCode": {
+                  "type": "integer",
+                  "default": 204
+                }
+              },
+              "description": "Response validation."
+            },
+            "cache": {
+              "type": "object",
+              "properties": {
+                "expiresIn": {
+                  "type": "integer",
+                  "description": "Cache TTL in milliseconds."
+                },
+                "privacy": {
+                  "type": "string",
+                  "enum": ["default", "public", "private"]
+                }
+              }
+            },
+            "cors": {
+              "type": "boolean",
+              "description": "Override server CORS settings for this route."
+            },
+            "description": {
+              "type": "string",
+              "description": "Route description for documentation."
+            },
+            "notes": {
+              "oneOf": [
+                { "type": "string" },
+                { "type": "array", "items": { "type": "string" } }
+              ],
+              "description": "Route notes for documentation."
+            },
+            "tags": {
+              "type": "array",
+              "items": { "type": "string" },
+              "description": "Route tags for documentation and grouping."
+            },
+            "payload": {
+              "type": "object",
+              "properties": {
+                "output": {
+                  "type": "string",
+                  "enum": ["data", "stream", "file"],
+                  "default": "data"
+                },
+                "parse": {
+                  "oneOf": [
+                    { "type": "boolean" },
+                    { "type": "string", "enum": ["gunzip"] }
+                  ],
+                  "default": true
+                },
+                "allow": {
+                  "oneOf": [
+                    { "type": "string" },
+                    { "type": "array", "items": { "type": "string" } }
+                  ],
+                  "description": "Allowed MIME types."
+                },
+                "maxBytes": {
+                  "type": "integer",
+                  "default": 1048576,
+                  "description": "Maximum payload size in bytes."
+                },
+                "multipart": {
+                  "oneOf": [
+                    { "type": "boolean" },
+                    {
+                      "type": "object",
+                      "properties": {
+                        "output": { "type": "string" }
+                      }
+                    }
+                  ]
+                }
+              },
+              "description": "Payload processing configuration."
+            },
+            "pre": {
+              "type": "array",
+              "items": {
+                "type": "object",
+                "properties": {
+                  "method": { "description": "Pre-handler method." },
+                  "assign": { "type": "string" },
+                  "failAction": { "type": "string", "enum": ["error", "log", "ignore"] }
+                }
+              },
+              "description": "Pre-handler methods."
+            }
+          }
+        }
+      }
+    }
+  }
+}

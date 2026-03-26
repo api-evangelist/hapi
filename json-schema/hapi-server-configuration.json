@@ -1,0 +1,217 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://github.com/api-evangelist/hapi/json-schema/hapi-server-configuration.json",
+  "title": "hapi Server Configuration",
+  "description": "JSON Schema for hapi server configuration options passed to Hapi.server().",
+  "type": "object",
+  "properties": {
+    "host": {
+      "type": "string",
+      "default": "localhost",
+      "description": "Public hostname or IP address."
+    },
+    "port": {
+      "type": "integer",
+      "default": 3000,
+      "description": "TCP port to listen on."
+    },
+    "address": {
+      "type": "string",
+      "description": "Hostname or IP address to bind to (defaults to host)."
+    },
+    "autoListen": {
+      "type": "boolean",
+      "default": true,
+      "description": "Whether to automatically start listening."
+    },
+    "tls": {
+      "oneOf": [
+        { "type": "boolean" },
+        {
+          "type": "object",
+          "properties": {
+            "key": { "type": "string" },
+            "cert": { "type": "string" },
+            "ca": {
+              "type": "array",
+              "items": { "type": "string" }
+            }
+          }
+        }
+      ],
+      "description": "TLS configuration."
+    },
+    "routes": {
+      "type": "object",
+      "properties": {
+        "cors": {
+          "oneOf": [
+            { "type": "boolean" },
+            {
+              "type": "object",
+              "properties": {
+                "origin": {
+                  "type": "array",
+                  "items": { "type": "string" },
+                  "default": ["*"]
+                },
+                "maxAge": {
+                  "type": "integer",
+                  "default": 86400
+                },
+                "headers": {
+                  "type": "array",
+                  "items": { "type": "string" }
+                },
+                "additionalHeaders": {
+                  "type": "array",
+                  "items": { "type": "string" }
+                },
+                "credentials": {
+                  "type": "boolean",
+                  "default": false
+                }
+              }
+            }
+          ],
+          "description": "CORS configuration."
+        },
+        "files": {
+          "type": "object",
+          "properties": {
+            "relativeTo": {
+              "type": "string",
+              "description": "Base path for relative file paths."
+            }
+          }
+        },
+        "validate": {
+          "type": "object",
+          "properties": {
+            "failAction": {
+              "type": "string",
+              "enum": ["error", "log", "ignore"],
+              "default": "error"
+            }
+          }
+        },
+        "security": {
+          "oneOf": [
+            { "type": "boolean" },
+            {
+              "type": "object",
+              "properties": {
+                "hsts": {
+                  "oneOf": [
+                    { "type": "boolean" },
+                    {
+                      "type": "object",
+                      "properties": {
+                        "maxAge": { "type": "integer" },
+                        "includeSubDomains": { "type": "boolean" },
+                        "preload": { "type": "boolean" }
+                      }
+                    }
+                  ]
+                },
+                "xframe": {
+                  "oneOf": [
+                    { "type": "boolean" },
+                    { "type": "string", "enum": ["deny", "sameorigin"] }
+                  ]
+                },
+                "xss": { "type": "boolean" },
+                "noOpen": { "type": "boolean" },
+                "noSniff": { "type": "boolean" },
+                "referrer": { "type": "boolean" }
+              }
+            }
+          ],
+          "description": "Security header configuration."
+        }
+      },
+      "description": "Default route configuration."
+    },
+    "cache": {
+      "oneOf": [
+        { "type": "string" },
+        {
+          "type": "object",
+          "properties": {
+            "name": { "type": "string" },
+            "provider": {
+              "type": "object",
+              "properties": {
+                "constructor": { "type": "string" },
+                "options": { "type": "object" }
+              }
+            }
+          }
+        },
+        {
+          "type": "array",
+          "items": { "type": "object" }
+        }
+      ],
+      "description": "Server-side cache provider configuration."
+    },
+    "compression": {
+      "oneOf": [
+        { "type": "boolean" },
+        {
+          "type": "object",
+          "properties": {
+            "minBytes": {
+              "type": "integer",
+              "default": 1024,
+              "description": "Minimum response size in bytes to compress."
+            }
+          }
+        }
+      ],
+      "description": "Compression settings."
+    },
+    "debug": {
+      "type": "object",
+      "properties": {
+        "request": {
+          "type": "array",
+          "items": { "type": "string" },
+          "description": "Request event tags to log."
+        },
+        "log": {
+          "type": "array",
+          "items": { "type": "string" },
+          "description": "Server log event tags to log."
+        }
+      },
+      "description": "Debug logging configuration."
+    },
+    "load": {
+      "type": "object",
+      "properties": {
+        "sampleInterval": {
+          "type": "integer",
+          "default": 0,
+          "description": "Sampling interval for load monitoring in milliseconds."
+        },
+        "maxHeapUsedBytes": {
+          "type": "integer",
+          "default": 0,
+          "description": "Maximum V8 heap used in bytes (0 = no limit)."
+        },
+        "maxRssBytes": {
+          "type": "integer",
+          "default": 0,
+          "description": "Maximum process RSS in bytes (0 = no limit)."
+        },
+        "maxEventLoopDelay": {
+          "type": "integer",
+          "default": 0,
+          "description": "Maximum event loop delay in milliseconds (0 = no limit)."
+        }
+      },
+      "description": "Server load monitoring configuration."
+    }
+  }
+}

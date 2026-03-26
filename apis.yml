@@ -38,7 +38,13 @@ apis:
       - Validation
       - Authentication
       - Frameworks
-    properties: []
+    properties:
+      - type: JSONSchema
+        url: >-
+          https://raw.githubusercontent.com/api-evangelist/hapi/refs/heads/main/json-schema/hapi-server-configuration.json
+      - type: JSONSchema
+        url: >-
+          https://raw.githubusercontent.com/api-evangelist/hapi/refs/heads/main/json-schema/hapi-route-definition.json
 common:
   - type: Website
     url: https://hapi.dev/
