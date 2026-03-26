@@ -1,0 +1,28 @@
+aid: hapi
+name: hapi
+description: >-
+  hapi is a rich framework for building applications and services in Node.js with a focus on configuration-driven design.
+type: Index
+image: https://kinlane-productions.s3.amazonaws.com/apis-json/apis-json-logo.jpg
+tags:
+  - Microservices
+url: >-
+  https://raw.githubusercontent.com/api-evangelist/hapi/refs/heads/main/apis.yml
+created: '2026-03-26'
+modified: '2026-03-26'
+specificationVersion: '0.19'
+apis:
+  - aid: hapi:hapi
+    name: hapi
+    description: >-
+      hapi is a rich framework for building applications and services in Node.js with a focus on configuration-driven design.
+    humanURL: https://github.com/api-evangelist/hapi
+    tags:
+      - Microservices
+    properties: []
+common:
+  - type: Website
+    url: https://github.com/api-evangelist/hapi
+maintainers:
+  - FN: Kin Lane
+    email: kin@apievangelist.com
