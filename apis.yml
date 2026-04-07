@@ -8,13 +8,12 @@ description: >-
 type: Index
 image: https://kinlane-productions.s3.amazonaws.com/apis-json/apis-json-logo.jpg
 tags:
-  - APIs
-  - Node.js
-  - JavaScript
-  - Web Framework
-  - Validation
   - Authentication
   - Frameworks
+  - JavaScript
+  - Node.js
+  - Validation
+  - Web Framework
 url: >-
   https://raw.githubusercontent.com/api-evangelist/hapi/refs/heads/main/apis.yml
 created: '2026-03-26'
@@ -31,13 +30,12 @@ apis:
       enterprise-grade applications.
     humanURL: https://hapi.dev/
     tags:
-      - APIs
-      - Node.js
-      - JavaScript
-      - Web Framework
-      - Validation
       - Authentication
       - Frameworks
+      - JavaScript
+      - Node.js
+      - Validation
+      - Web Framework
     properties:
       - type: JSONSchema
         url: >-
