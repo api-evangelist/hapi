@@ -1,5 +1,5 @@
 aid: hapi
-name: hapi
+name: Hapi
 description: >-
   hapi is a rich, configuration-centric framework for building web applications
   and APIs in Node.js. It provides a powerful plugin system, built-in input
@@ -22,7 +22,7 @@ modified: '2026-03-26'
 specificationVersion: '0.19'
 apis:
   - aid: hapi:hapi
-    name: hapi
+    name: Hapi
     description: >-
       hapi is a rich, configuration-centric framework for building web
       applications and APIs in Node.js. It provides a powerful plugin system,
