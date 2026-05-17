@@ -48,11 +48,11 @@ common:
     url: https://hapi.dev/
   - type: Documentation
     url: https://hapi.dev/api/
-  - type: Getting Started
+  - type: GettingStarted
     url: https://hapi.dev/tutorials/
-  - type: GitHub Organization
+  - type: GitHubOrganization
     url: https://github.com/hapijs
-  - type: GitHub Repository
+  - type: GitHubRepository
     url: https://github.com/hapijs/hapi
   - type: Plugins
     url: https://hapi.dev/plugins/
