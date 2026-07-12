@@ -44,6 +44,8 @@ apis:
         url: >-
           https://raw.githubusercontent.com/api-evangelist/hapi/refs/heads/main/json-schema/hapi-route-definition.json
 common:
+  - type: DomainSecurity
+    url: security/hapi-domain-security.yml
   - type: Website
     url: https://hapi.dev/
   - type: Documentation
