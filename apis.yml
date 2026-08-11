@@ -56,6 +56,14 @@ apis:
         url: >-
           https://raw.githubusercontent.com/api-evangelist/hapi/refs/heads/main/json-schema/hapi-route-definition.json
 common:
+  - type: IssueTracker
+    url: https://github.com/hapijs/hapi/issues
+  - type: Releases
+    url: https://github.com/hapijs/hapi/releases
+  - type: CodeOfConduct
+    url: https://github.com/hapijs/.github/blob/master/CODE_OF_CONDUCT.md
+  - type: ContributionGuide
+    url: https://github.com/hapijs/.github/blob/master/CONTRIBUTING.md
   - type: DomainSecurity
     url: security/hapi-domain-security.yml
   - type: Website
