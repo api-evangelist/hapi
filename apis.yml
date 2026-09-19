@@ -32,6 +32,13 @@ accessModel:
 image: https://kinlane-images.s3.amazonaws.com/shared/apis-json/icons/hapi.png
 tags:
   - Authentication
+  - Framework
+  - JavaScript
+  - Node.js
+  - Validation
+  - Web Framework
+tags_raw:
+  - Authentication
   - Frameworks
   - JavaScript
   - Node.js
@@ -53,6 +60,13 @@ apis:
       enterprise-grade applications.
     humanURL: https://hapi.dev/
     tags:
+      - Authentication
+      - Framework
+      - JavaScript
+      - Node.js
+      - Validation
+      - Web Framework
+    tags_raw:
       - Authentication
       - Frameworks
       - JavaScript
